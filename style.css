@@ -1,0 +1,1867 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Special+Elite&display=swap');
+
+/* 1. COLORES Y CONFIGURACIÓN GENERAL */
+:root {
+    --background: #090b0b;
+    --panel: #151918;
+    --red: #c52b2b;
+    --red-dark: #651c1c;
+    --text: #d6d2c8;
+    --muted: #858780;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--background);
+    color: var(--text);
+    font-family: "Barlow Condensed", sans-serif;
+}
+
+button {
+    font: inherit;
+}
+
+/* 2. PANTALLAS */
+.screen {
+    min-height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* 3. PANTALLA DE INICIO */
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 36px 20px;
+    text-align: center;
+    isolation: isolate;
+
+    background:
+        radial-gradient(ellipse at 50% 45%,
+            rgba(105, 24, 24, 0.22), transparent 55%),
+        linear-gradient(180deg, #171b1a 0%, #090b0b 75%);
+}
+
+.start-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent 0px,
+            transparent 3px,
+            rgba(255, 255, 255, 0.025) 4px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.7),
+            transparent 25%,
+            transparent 75%,
+            rgba(0, 0, 0, 0.7)
+        );
+}
+
+.warning-label {
+    position: absolute;
+    top: 28px;
+    left: 30px;
+    color: var(--red);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.title-block {
+    width: min(100%, 850px);
+}
+
+.eyebrow {
+    color: var(--red);
+    font-size: 14px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+h1 {
+    margin: 20px 0 0;
+    font-size: clamp(48px, 10vw, 112px);
+    line-height: 0.88;
+    font-weight: 900;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+
+    text-shadow:
+        2px 0 rgba(197, 43, 43, 0.55),
+        -2px 1px rgba(0, 0, 0, 0.9),
+        0 0 24px rgba(197, 43, 43, 0.12);
+}
+
+h1 span {
+    display: block;
+    color: var(--red);
+    font-family: "Special Elite", serif;
+    font-size: 1.2em;
+    letter-spacing: 8px;
+    margin-top: 8px;
+}
+
+.title-block h2 {
+    margin: 24px 0;
+    color: #a9aaa3;
+    font-family: "Special Elite", serif;
+    font-size: clamp(16px, 3vw, 23px);
+    font-weight: normal;
+    letter-spacing: 5px;
+}
+
+.intro {
+    color: #a3a59e;
+    font-family: "Special Elite", serif;
+    font-size: 15px;
+    line-height: 1.9;
+    margin-top: 32px;
+}
+
+.start-button {
+    margin-top: 34px;
+    padding: 15px 44px;
+    border: 1px solid #a82a2a;
+    background: rgba(76, 16, 16, 0.3);
+    color: #f0e9df;
+    cursor: pointer;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    transition: background 180ms ease, letter-spacing 180ms ease;
+}
+
+.start-button:hover {
+    background: #7d2020;
+    letter-spacing: 6px;
+}
+
+.start-button:focus-visible,
+.terminal:focus-visible {
+    outline: 3px solid #e6b4a8;
+    outline-offset: 5px;
+}
+
+.footer-text {
+    position: absolute;
+    bottom: 22px;
+    color: #646761;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* 4. OFICINA DE CONTROL */
+.office-screen {
+    padding: 28px clamp(18px, 4vw, 60px);
+    background:
+        radial-gradient(ellipse at 50% 45%,
+            rgba(90, 30, 25, 0.12), transparent 65%),
+        #0b0e0d;
+}
+
+.office-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #333633;
+}
+
+.office-header h2 {
+    margin: 6px 0 0;
+    font-size: clamp(22px, 4vw, 36px);
+    letter-spacing: 2px;
+}
+
+.integrity-panel {
+    width: min(100%, 240px);
+    color: var(--muted);
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+.integrity-panel strong {
+    display: block;
+    margin: 7px 0;
+    color: var(--red);
+    font-size: 26px;
+}
+
+.integrity-track {
+    height: 5px;
+    background: #303432;
+}
+
+.integrity-fill {
+    width: 100%;
+    height: 100%;
+    background: var(--red);
+}
+
+.office-room {
+    width: min(100%, 1000px);
+    margin: 38px auto;
+    padding: 20px;
+    border: 1px solid #333936;
+    background: linear-gradient(180deg, #181d1b, #0c0f0e);
+    box-shadow: 0 20px 60px #0008;
+}
+
+.room-label {
+    color: #8b8e86;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.monitor-wall {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 35px 0;
+}
+
+.terminal {
+    min-width: 0;
+    padding: 10px;
+    border: 1px solid #454944;
+    background: #090b0b;
+    color: var(--text);
+    cursor: pointer;
+}
+
+.monitor-screen {
+    display: flex;
+    min-height: 125px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    border: 5px solid #292d2b;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            #101b18 0px,
+            #101b18 2px,
+            #14201c 3px
+        );
+}
+
+.monitor-status {
+    color: #a8b5a8;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+.monitor-code {
+    color: #d5d2c5;
+    font-family: "Special Elite", serif;
+    font-size: 30px;
+}
+
+.terminal-label {
+    display: block;
+    padding-top: 12px;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.terminal:hover {
+    border-color: var(--red);
+}
+
+.desk {
+    padding: 20px;
+    border-top: 3px solid #373c38;
+    background: #101311;
+    color: #9da198;
+}
+
+.desk > span {
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.desk p {
+    font-family: "Special Elite", serif;
+    font-size: 14px;
+}
+
+.office-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #787b73;
+    font-size: 11px;
+    letter-spacing: 1px;
+}
+
+/* 5. ADAPTACIÓN A PANTALLAS PEQUEÑAS */
+@media (max-width: 600px) {
+    .warning-label {
+        top: 18px;
+        left: 15px;
+        font-size: 10px;
+    }
+
+    .footer-text {
+        position: static;
+        margin-top: 50px;
+        line-height: 1.8;
+    }
+
+    .office-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .monitor-wall {
+        grid-template-columns: 1fr;
+    }
+
+    .office-footer {
+        flex-direction: column;
+    }
+}
+
+/* 6. PANEL DE DESAFÍOS */
+.challenge-panel {
+    width: min(100%, 760px);
+    margin: 30px auto;
+    padding: clamp(18px, 4vw, 36px);
+    border: 1px solid #5b2929;
+    background: #111514;
+    box-shadow: 0 0 40px #0009;
+}
+
+.challenge-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.close-button {
+    border: 1px solid #555a54;
+    background: transparent;
+    color: var(--text);
+    padding: 9px 12px;
+    cursor: pointer;
+}
+
+.challenge-unit {
+    margin-top: 28px;
+    color: var(--red);
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+.challenge-panel > h2 {
+    font-size: clamp(24px, 5vw, 36px);
+    letter-spacing: 1px;
+}
+
+#challengeQuestion {
+    line-height: 1.7;
+    font-size: 18px;
+}
+
+.answer-options {
+    display: grid;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.answer-button {
+    padding: 15px;
+    border: 1px solid #454944;
+    background: #1a201d;
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    line-height: 1.5;
+}
+
+.answer-button:hover:not(:disabled) {
+    border-color: var(--red);
+    background: #29201f;
+}
+
+.answer-button:disabled {
+    cursor: default;
+    opacity: 0.8;
+}
+
+.answer-button:focus-visible,
+.close-button:focus-visible {
+    outline: 3px solid #e6b4a8;
+    outline-offset: 3px;
+}
+
+.feedback {
+    margin-top: 24px;
+    padding: 18px;
+    border-left: 3px solid var(--red);
+    background: #1c211e;
+    line-height: 1.7;
+}
+
+.feedback strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.feedback.correct {
+    border-left-color: #82b88a;
+}
+
+#continueButton {
+    display: block;
+    margin-top: 22px;
+}
+
+@media (max-width: 600px) {
+    .challenge-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+/* ==================================================
+   PROTOCOLO CERO | CAPA DE VIGILANCIA VHS
+   ================================================== */
+
+/* Viñeta oscura y líneas de señal */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(0, 0, 0, 0.12) 4px
+        ),
+        radial-gradient(
+            ellipse at center,
+            transparent 45%,
+            rgba(0, 0, 0, 0.42) 100%
+        );
+
+    opacity: 0.55;
+}
+
+/* Pequeña imperfección de imagen */
+.start-screen,
+.office-screen {
+    isolation: isolate;
+}
+
+/* Etiquetas de terminal como monitores CRT */
+.monitor-screen {
+    position: relative;
+    overflow: hidden;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0px,
+            transparent 3px,
+            rgba(0, 0, 0, 0.25) 4px
+        ),
+        radial-gradient(
+            ellipse at center,
+            #253b32 0%,
+            #111b17 72%,
+            #080b09 100%
+        );
+    border: 2px solid #343c36;
+    box-shadow:
+        inset 0 0 18px rgba(0, 0, 0, 0.85),
+        0 0 10px rgba(102, 151, 117, 0.06);
+}
+
+/* Brillo CRT muy discreto */
+.monitor-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        115deg,
+        rgba(255, 255, 255, 0.07),
+        transparent 30%,
+        transparent 75%,
+        rgba(255, 255, 255, 0.025)
+    );
+}
+
+/* Texto de monitor con estética de señal */
+.monitor-status {
+    text-shadow: 0 0 5px currentColor;
+}
+
+.monitor-code {
+    text-shadow: 0 0 8px rgba(155, 210, 170, 0.3);
+}
+
+/* La señal titila ocasionalmente, sin marear */
+@keyframes signal-flicker {
+    0%, 94%, 96%, 100% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 0.92;
+    }
+
+    97% {
+        opacity: 0.97;
+    }
+}
+
+.monitor-screen {
+    animation: signal-flicker 7s infinite;
+}
+
+/* Apariencia de registro de seguridad */
+.warning-label {
+    text-shadow: 0 0 8px rgba(255, 55, 45, 0.25);
+}
+
+/* Respeta la preferencia del usuario por menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* INDICADORES DEL REGISTRO ACADÉMICO */
+
+.progress-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 170px;
+    padding: 12px;
+    border: 1px solid #343c36;
+    background: rgba(5, 8, 7, 0.72);
+    color: #a9b5aa;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.progress-panel > strong {
+    color: #e2e5dc;
+    font-size: 22px;
+}
+
+.progress-track {
+    width: 100%;
+    height: 5px;
+    overflow: hidden;
+    background: #292e2a;
+}
+
+.progress-fill {
+    width: 0%;
+    height: 100%;
+    background: #9bb79c;
+    transition: width 0.3s ease;
+}
+
+.integrity-track {
+    overflow: hidden;
+}
+
+.integrity-fill {
+    width: 100%;
+    height: 100%;
+    background: #a33b35;
+    transition: width 0.3s ease, background 0.3s ease;
+}
+
+/* El resumen final conserva la estética de los informes internos */
+.summary-entry {
+    padding: 12px 0;
+    border-bottom: 1px solid #343c36;
+    line-height: 1.5;
+}
+
+.summary-entry strong {
+    display: block;
+    margin-bottom: 4px;
+    color: #d6d2c8;
+}
+
+.summary-entry p {
+    margin: 4px 0;
+    color: #a9b5aa;
+}
+
+.summary-entry.is-wrong strong {
+    color: #e58b83;
+}
+
+.summary-entry.is-correct strong {
+    color: #a9c9a7;
+}
+
+@media (max-width: 700px) {
+    .progress-panel {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+/* RESPUESTAS DEL DESAFÍO */
+
+.answer-button.correct-answer {
+    border-color: #668f6a;
+    background: rgba(64, 112, 70, 0.22);
+    color: #c0dfc0;
+}
+
+.answer-button.wrong-answer {
+    border-color: #a33b35;
+    background: rgba(145, 35, 35, 0.2);
+    color: #edaaa3;
+}
+
+.answer-button:disabled {
+    cursor: default;
+    opacity: 0.88;
+}
+
+/* DEGRADACIÓN SUTIL DE LA OFICINA */
+
+
+.office-screen.integrity-warning .monitor-screen {
+    filter: brightness(0.9) contrast(1.05);
+}
+
+.office-screen.integrity-critical .monitor-screen {
+    filter: brightness(0.7) contrast(1.2) saturate(0.7);
+    animation-duration: 3s;
+}
+
+.office-screen.integrity-failed .monitor-screen {
+    filter: brightness(0.45) contrast(1.4) saturate(0.5);
+    animation-duration: 1.2s;
+}
+
+.office-screen.integrity-critical .monitor-status,
+.office-screen.integrity-failed .monitor-status {
+    color: #d77b72;
+    text-shadow: 0 0 8px rgba(197, 43, 43, 0.6);
+}
+
+.office-screen.integrity-failed .monitor-code {
+    color: #d96b63;
+    text-shadow: 0 0 12px rgba(197, 43, 43, 0.65);
+}
+
+.office-screen.integrity-failed .office-header {
+    border-bottom-color: #8e2929;
+}
+
+/* Que el informe final sea legible y desplazable */
+.challenge-panel {
+    scroll-margin-top: 20px;
+}
+
+#feedback {
+    overflow-wrap: anywhere;
+}
+
+.summary-entry {
+    overflow-wrap: anywhere;
+}
+
+/* =====================================================
+   PROTOCOLO CERO | ACABADO CINEMATOGRÁFICO
+   Capa visual adicional. Conserva la lógica existente.
+   ===================================================== */
+
+:root {
+    --background: #080a09;
+    --panel: #111513;
+    --red: #c45b50;
+    --red-dark: #612521;
+    --text: #dedbd1;
+    --muted: #96968d;
+    --line: rgba(190, 194, 178, 0.16);
+    --green-light: #a5c4a8;
+}
+
+/* Fondo general con profundidad */
+body {
+    background:
+        radial-gradient(ellipse at 50% 0%,
+            rgba(92, 49, 39, 0.12), transparent 48%),
+        #080a09;
+    letter-spacing: 0.15px;
+}
+
+/* Evita que el efecto VHS dificulte demasiado la lectura */
+body::after {
+    opacity: 0.32;
+}
+
+/* Pantalla inicial: iluminación de película */
+.start-screen {
+    background:
+        radial-gradient(ellipse at 50% 43%,
+            rgba(118, 38, 31, 0.18), transparent 40%),
+        radial-gradient(ellipse at 50% 100%,
+            rgba(54, 63, 53, 0.13), transparent 55%),
+        linear-gradient(180deg, #131715 0%, #080a09 78%);
+}
+
+.title-block {
+    position: relative;
+}
+
+.eyebrow {
+    color: #c77b6f;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 6px;
+}
+
+h1 {
+    text-shadow:
+        1px 0 rgba(197, 66, 55, 0.4),
+        0 5px 35px rgba(0, 0, 0, 0.9);
+}
+
+h1 span {
+    color: #c65c50;
+    text-shadow: 0 0 26px rgba(170, 47, 39, 0.18);
+}
+
+.title-block h2 {
+    color: #b7b5aa;
+    line-height: 1.6;
+}
+
+.intro {
+    max-width: 580px;
+    margin-right: auto;
+    margin-left: auto;
+    color: #aaa99f;
+}
+
+/* Botones con respuesta táctil más precisa */
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.start-button,
+.close-button,
+.terminal,
+.answer-button {
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+.start-button {
+    background: linear-gradient(
+        135deg,
+        rgba(111, 36, 30, 0.36),
+        rgba(34, 19, 18, 0.55)
+    );
+    border-color: #874039;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.24);
+}
+
+.start-button:hover {
+    background: #672a25;
+    border-color: #c16a5e;
+    box-shadow: 0 0 28px rgba(169, 58, 48, 0.13);
+}
+
+.start-button:active,
+.close-button:active,
+.answer-button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+/* Sala de control */
+.office-screen {
+    background:
+        radial-gradient(ellipse at 50% 30%,
+            rgba(76, 51, 39, 0.12), transparent 58%),
+        linear-gradient(180deg, #0d100e, #080a09 80%);
+}
+
+.office-header {
+    border-bottom-color: var(--line);
+}
+
+.office-header h2 {
+    color: #e0ddd2;
+    line-height: 1.15;
+}
+
+.integrity-panel strong {
+    color: #c76b5e;
+    text-shadow: 0 0 14px rgba(197, 67, 55, 0.12);
+}
+
+/* Consola central: materiales y sombras */
+.office-room {
+    position: relative;
+    border-color: #343a34;
+    background:
+        linear-gradient(135deg,
+            rgba(34, 41, 35, 0.78),
+            rgba(12, 15, 13, 0.97) 65%);
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.42),
+        inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.room-label {
+    color: #b0ad9f;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Monitores con marco físico y brillo contenido */
+.terminal {
+    border-color: #42483f;
+    background: linear-gradient(145deg, #171b18, #080a09);
+    box-shadow:
+        inset 0 1px rgba(255, 255, 255, 0.025),
+        0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+.terminal:hover {
+    border-color: #9e5147;
+    background: linear-gradient(145deg, #211a18, #0b0d0b);
+    box-shadow:
+        0 0 20px rgba(161, 55, 46, 0.08),
+        inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.monitor-screen {
+    border-color: #343b34;
+    background-color: #0c1510;
+    box-shadow:
+        inset 0 0 24px rgba(0, 0, 0, 0.76),
+        0 0 14px rgba(116, 157, 118, 0.055);
+}
+
+.monitor-status {
+    color: #a5b6a3;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+}
+
+.monitor-code {
+    color: #d7d7c8;
+    text-shadow: 0 0 9px rgba(153, 198, 157, 0.2);
+}
+
+.terminal-label {
+    color: #c2c0b5;
+    line-height: 1.5;
+}
+
+/* Escritorio de control */
+.desk {
+    border-top-color: #48483d;
+    background:
+        linear-gradient(180deg, #151916, #0c0f0d);
+}
+
+.desk > span {
+    color: #b4a68f;
+    font-weight: 600;
+}
+
+.desk p {
+    line-height: 1.8;
+}
+
+/* Indicadores y controles */
+.progress-panel {
+    border-color: var(--line);
+    background: rgba(5, 8, 7, 0.86);
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #67866d, #b3c8a8);
+    box-shadow: 0 0 10px rgba(142, 188, 145, 0.12);
+}
+
+.integrity-fill {
+    transition:
+        width 400ms ease,
+        background-color 300ms ease;
+}
+
+.close-button {
+    border-color: #55594f;
+    background: rgba(20, 24, 21, 0.65);
+    color: #d2d0c6;
+}
+
+.close-button:hover {
+    border-color: #9d554b;
+    background: rgba(91, 37, 32, 0.25);
+}
+
+/* Panel de retos: ventana de diagnóstico */
+.challenge-panel {
+    border-color: #49312e;
+    background:
+        linear-gradient(145deg,
+            rgba(25, 29, 26, 0.98),
+            rgba(12, 15, 13, 0.99));
+    box-shadow:
+        0 24px 65px rgba(0, 0, 0, 0.4),
+        inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+.challenge-unit {
+    color: #d17a6c;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.challenge-panel > h2 {
+    color: #e3dfd4;
+    line-height: 1.2;
+}
+
+#challengeQuestion {
+    color: #d0cfc5;
+    line-height: 1.8;
+}
+
+.answer-options {
+    gap: 10px;
+}
+
+.answer-button {
+    border-color: #3b423b;
+    background: linear-gradient(110deg, #191e1a, #111512);
+    overflow-wrap: anywhere;
+}
+
+.answer-button:hover:not(:disabled) {
+    border-color: #9e5147;
+    background: #211a18;
+    box-shadow: inset 3px 0 #a65348;
+}
+
+.answer-button.correct-answer {
+    border-color: #668f6a;
+    background: rgba(64, 112, 70, 0.16);
+    box-shadow: inset 3px 0 #82b88a;
+}
+
+.answer-button.wrong-answer {
+    border-color: #a34b43;
+    background: rgba(145, 35, 35, 0.13);
+    box-shadow: inset 3px 0 #b85248;
+}
+
+.feedback {
+    border-left-width: 3px;
+    background: rgba(27, 33, 28, 0.94);
+}
+
+.feedback.correct {
+    border-left-color: #82b88a;
+}
+
+.feedback:not(.correct) {
+    border-left-color: #b75b50;
+}
+
+/* Informe final */
+.summary-entry {
+    border-bottom-color: var(--line);
+    padding: 16px 0;
+}
+
+.summary-entry strong {
+    line-height: 1.5;
+}
+
+.office-footer {
+    line-height: 1.8;
+}
+
+/* Accesibilidad: foco visible y controles táctiles */
+button:focus-visible {
+    outline: 2px solid #d9b0a2;
+    outline-offset: 4px;
+}
+
+@media (hover: none) {
+    .terminal:hover,
+    .answer-button:hover:not(:disabled),
+    .start-button:hover,
+    .close-button:hover {
+        box-shadow: none;
+    }
+}
+
+/* Móviles: conservar espacio y legibilidad */
+@media (max-width: 600px) {
+    .office-screen {
+        padding: 20px 14px;
+    }
+
+    .office-room {
+        margin: 22px auto;
+        padding: 13px;
+    }
+
+    .monitor-wall {
+        gap: 13px;
+        margin: 22px 0;
+    }
+
+    .monitor-screen {
+        min-height: 115px;
+    }
+
+    .challenge-panel {
+        margin: 18px auto;
+        padding: 19px 15px;
+    }
+
+    .challenge-header {
+        gap: 12px;
+    }
+
+    .answer-button {
+        padding: 14px 12px;
+    }
+
+    .progress-panel {
+        padding: 10px;
+    }
+
+    .start-button {
+        max-width: 100%;
+        padding: 14px 22px;
+        letter-spacing: 2px;
+    }
+
+    .eyebrow {
+        letter-spacing: 3px;
+    }
+
+    h1 {
+        letter-spacing: -1px;
+    }
+
+    h1 span {
+        letter-spacing: 4px;
+    }
+
+    .title-block h2 {
+        letter-spacing: 2px;
+    }
+}
+
+/* =====================================================
+   FASE 2 | PROFUNDIDAD Y ATMÓSFERA
+   ===================================================== */
+
+/* Iluminación ambiental localizada */
+.office-room {
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.office-room::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    width: 76%;
+    height: 1px;
+    background: rgba(190, 126, 103, 0.3);
+    box-shadow: 0 0 28px rgba(174, 63, 48, 0.12);
+    pointer-events: none;
+}
+
+/* Los monitores parecen equipos físicos */
+.terminal {
+    position: relative;
+    overflow: hidden;
+}
+
+.terminal::before {
+    content: "";
+    display: block;
+    height: 3px;
+    margin: -10px -10px 10px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(179, 174, 151, 0.22),
+        transparent
+    );
+    pointer-events: none;
+}
+
+.monitor-screen {
+    border-radius: 2px;
+    box-shadow:
+        inset 0 0 28px rgba(0, 0, 0, 0.88),
+        inset 0 0 4px rgba(158, 190, 151, 0.12),
+        0 0 12px rgba(117, 157, 119, 0.06);
+}
+
+/* Brillo interno sutil */
+.monitor-screen::after {
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.045),
+            transparent 22%,
+            transparent 80%,
+            rgba(0, 0, 0, 0.14)
+        ),
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.18),
+            transparent 15%,
+            transparent 85%,
+            rgba(0, 0, 0, 0.18)
+        );
+}
+
+/* Estados visuales de alerta */
+.office-screen.integrity-warning .office-room {
+    border-color: #574036;
+}
+
+.office-screen.integrity-critical .office-room {
+    border-color: #67403a;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.48),
+        0 0 24px rgba(151, 57, 45, 0.07);
+}
+
+.office-screen.integrity-failed .office-room {
+    border-color: #77342e;
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.55),
+        0 0 32px rgba(174, 40, 35, 0.12);
+}
+
+/* Estados de los terminales */
+.office-screen.integrity-critical .terminal-label,
+.office-screen.integrity-failed .terminal-label {
+    color: #d0b4a8;
+}
+
+.office-screen.integrity-failed .monitor-screen {
+    border-color: #64352f;
+}
+
+/* Transiciones suaves, sin movimiento constante */
+.office-room,
+.terminal,
+.monitor-screen,
+.terminal-label {
+    transition:
+        border-color 300ms ease,
+        box-shadow 300ms ease,
+        background-color 300ms ease,
+        color 300ms ease;
+}
+
+/* Evita transiciones excesivas si el usuario las reduce */
+@media (prefers-reduced-motion: reduce) {
+    .office-room,
+    .terminal,
+    .monitor-screen,
+    .terminal-label {
+        transition: none;
+    }
+}
+
+/* =========================================
+   PROTOCOLO CERO | FASE 3: SEÑAL INESTABLE
+   ========================================= */
+
+/* Interferencia horizontal en los monitores */
+.monitor-screen {
+    position: relative;
+    overflow: hidden;
+}
+
+.monitor-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+    background:
+        linear-gradient(
+            180deg,
+            transparent 0%,
+            transparent 43%,
+            rgba(194, 213, 183, 0.02) 45%,
+            rgba(194, 213, 183, 0.19) 47%,
+            rgba(194, 213, 183, 0.05) 49%,
+            transparent 53%,
+            transparent 100%
+        );
+    transform: translateY(-8%);
+    animation: signal-interference 11s steps(1, end) infinite;
+}
+
+/* Parpadeo breve e irregular */
+@keyframes signal-interference {
+    0%, 87%, 90%, 93%, 100% {
+        opacity: 0;
+        transform: translateY(-8%);
+    }
+
+    88% {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+
+    89% {
+        opacity: 0.15;
+        transform: translateY(2%);
+    }
+
+    91% {
+        opacity: 0.55;
+        transform: translateY(1%);
+    }
+
+    92% {
+        opacity: 0.05;
+        transform: translateY(3%);
+    }
+}
+
+/* Leve textura luminosa en los textos de los monitores */
+.monitor-screen .monitor-code {
+    text-shadow: 0 0 5px rgba(143, 190, 139, 0.18);
+}
+
+/* Evita animaciones para quienes prefieren movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .monitor-screen::before {
+        animation: none;
+        display: none;
+    }
+}
+
+/* =========================================
+   PROTOCOLO CERO | FASE 4: DETERIORO
+   ========================================= */
+
+/* Integridad baja: la sala pierde calidez */
+.office-screen.integrity-warning .office-room {
+    background-image:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(113, 69, 53, 0.07),
+            transparent 68%
+        );
+}
+
+.office-screen.integrity-warning .monitor-screen {
+    filter: saturate(0.78) brightness(0.92);
+}
+
+/* Integridad crítica: ambiente más frío y oscuro */
+.office-screen.integrity-critical .office-room {
+    background-image:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(124, 48, 39, 0.10),
+            transparent 70%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.04),
+            rgba(0, 0, 0, 0.22)
+        );
+}
+
+.office-screen.integrity-critical .monitor-screen {
+    filter: saturate(0.62) brightness(0.82);
+}
+
+.office-screen.integrity-critical .terminal {
+    border-color: rgba(150, 76, 62, 0.42);
+}
+
+/* Integridad agotada: fallo del sistema */
+.office-screen.integrity-failed .office-room {
+    background-image:
+        radial-gradient(
+            ellipse at 50% 45%,
+            rgba(135, 30, 27, 0.13),
+            transparent 72%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(0, 0, 0, 0.12),
+            rgba(0, 0, 0, 0.34)
+        );
+}
+
+.office-screen.integrity-failed .monitor-screen {
+    filter: saturate(0.42) brightness(0.70);
+}
+
+.office-screen.integrity-failed .terminal {
+    border-color: rgba(160, 54, 46, 0.55);
+    box-shadow: inset 0 0 18px rgba(110, 24, 22, 0.10);
+}
+
+/* Cambios graduales, no bruscos */
+.office-room,
+.monitor-screen,
+.terminal {
+    transition:
+        background-color 450ms ease,
+        border-color 450ms ease,
+        box-shadow 450ms ease,
+        filter 450ms ease;
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+    .office-room,
+    .monitor-screen,
+    .terminal {
+        transition: none;
+    }
+}
+
+/* =========================================
+   PROTOCOLO CERO | FASE 5B: FONDOS VISUALES
+   ========================================= */
+
+/* Pantalla de inicio: pasillo industrial */
+.start-screen {
+    background-color: #080a09;
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(4, 6, 6, 0.88) 0%,
+            rgba(4, 6, 6, 0.58) 52%,
+            rgba(4, 6, 6, 0.22) 100%
+        ),
+        linear-gradient(
+            0deg,
+            rgba(4, 6, 6, 0.68),
+            transparent 45%
+        ),
+        url("imagenes/inicio.jpeg.jfif");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Sala de control: textura y profundidad */
+.office-room {
+    background-color: #101412;
+    background-image:
+        linear-gradient(
+            rgba(5, 8, 7, 0.48),
+            rgba(5, 8, 7, 0.76)
+        ),
+        url("imagenes/sala-control.jfif");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Imágenes de vigilancia en los monitores */
+.terminal:nth-child(1) .monitor-screen {
+    background-image:
+        linear-gradient(rgba(8, 15, 12, 0.22), rgba(8, 15, 12, 0.42)),
+        url("imagenes/monitor-operaciones.jfif");
+}
+
+.terminal:nth-child(2) .monitor-screen {
+    background-image:
+        linear-gradient(rgba(8, 15, 12, 0.22), rgba(8, 15, 12, 0.42)),
+        url("imagenes/monitor-red.jfif");
+}
+
+.terminal:nth-child(3) .monitor-screen {
+    background-image:
+        linear-gradient(rgba(8, 15, 12, 0.22), rgba(8, 15, 12, 0.42)),
+        url("imagenes/monitor-sistemas.jfif");
+}
+
+/* Ajustes comunes para las imágenes */
+.terminal .monitor-screen {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* En pantallas pequeñas, mantener el contenido visible */
+@media (max-width: 600px) {
+    .start-screen {
+        background-position: 58% center;
+    }
+
+    .office-room {
+        background-position: center;
+    }
+}
+
+/* =========================================
+   FASE 5D: ACABADO CCTV
+   ========================================= */
+
+/* Imagen con aspecto de cámara de seguridad */
+.terminal .monitor-screen {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-color: #0b100d;
+    background-blend-mode: normal;
+    box-shadow:
+        inset 0 0 22px rgba(0, 0, 0, 0.8),
+        inset 0 0 3px rgba(155, 193, 143, 0.2);
+}
+
+/* Tinte verdoso y oscurecimiento de los bordes */
+.terminal .monitor-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.48),
+            transparent 22%,
+            transparent 78%,
+            rgba(0, 0, 0, 0.48)
+        ),
+        linear-gradient(
+            0deg,
+            rgba(4, 12, 7, 0.45),
+            rgba(116, 158, 102, 0.08)
+        );
+}
+
+/* Texto de cámara por encima de la imagen */
+.terminal .monitor-status,
+.terminal .monitor-code {
+    position: relative;
+    z-index: 3;
+}
+
+/* Etiquetas técnicas */
+.terminal .monitor-status {
+    text-shadow: 0 0 5px rgba(165, 207, 151, 0.3);
+}
+
+.terminal .monitor-code {
+    text-shadow: 0 0 7px rgba(165, 207, 151, 0.35);
+}
+
+/* Al pasar el cursor, la cámara cobra vida */
+@media (hover: hover) and (pointer: fine) {
+    .terminal:hover .monitor-screen {
+        border-color: rgba(148, 185, 133, 0.45);
+    }
+
+    .terminal:hover .monitor-screen::after {
+        background-color: rgba(117, 155, 104, 0.07);
+    }
+}
+
+/* =========================================
+   FASE 5E: TERMINAL DE EVALUACIÓN
+   ========================================= */
+
+.challenge-panel {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(24, 29, 26, 0.98),
+            rgba(8, 11, 10, 0.98)
+        );
+    border: 1px solid rgba(157, 117, 91, 0.32);
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.55),
+        inset 0 1px rgba(255, 255, 255, 0.025);
+}
+
+/* Línea de identificación del terminal */
+.challenge-panel::before {
+    content: "SAHUR INC.  //  TERMINAL DE EVALUACIÓN";
+    display: block;
+    margin: -2px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(157, 117, 91, 0.22);
+    color: #a49c8c;
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+}
+
+/* Encabezado */
+.challenge-header {
+    gap: 16px;
+    align-items: center;
+}
+
+.challenge-unit {
+    color: #b77b68;
+    font-family: monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.challenge-panel h2 {
+    line-height: 1.2;
+    text-wrap: balance;
+    text-shadow: 0 0 18px rgba(170, 80, 60, 0.1);
+}
+
+#challengeQuestion {
+    color: #dedbd1;
+    line-height: 1.75;
+    max-width: 72ch;
+}
+
+/* Opciones de respuesta */
+.answer-options {
+    display: grid;
+    gap: 10px;
+    margin-top: 22px;
+}
+
+.answer-options button {
+    position: relative;
+    min-height: 48px;
+    padding: 13px 16px;
+    border: 1px solid rgba(157, 164, 146, 0.2);
+    border-radius: 2px;
+    background: rgba(133, 145, 128, 0.045);
+    color: #d8d8ce;
+    text-align: left;
+    line-height: 1.5;
+    transition:
+        background-color 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
+}
+
+.answer-options button:not(:disabled):hover {
+    border-color: rgba(175, 190, 157, 0.55);
+    background: rgba(133, 165, 120, 0.1);
+}
+
+.answer-options button:focus-visible,
+.challenge-panel button:focus-visible {
+    outline: 2px solid #c8b79a;
+    outline-offset: 3px;
+}
+
+.answer-options button:disabled {
+    cursor: default;
+    opacity: 0.9;
+}
+
+/* Feedback */
+.feedback {
+    margin-top: 20px;
+    padding: 15px 17px;
+    border-left: 3px solid #9d9b7c;
+    background: rgba(143, 141, 103, 0.075);
+    line-height: 1.65;
+}
+
+.feedback.correct {
+    border-left-color: #829c75;
+    background: rgba(92, 125, 78, 0.1);
+}
+
+.feedback.incorrect {
+    border-left-color: #b75c50;
+    background: rgba(145, 48, 40, 0.12);
+}
+
+/* Continuar */
+.challenge-panel #continueButton {
+    margin-top: 20px;
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 600px) {
+    .challenge-panel {
+        padding: 18px;
+    }
+
+    .challenge-panel::before {
+        font-size: 9px;
+        letter-spacing: 0.1em;
+    }
+
+    .answer-options button {
+        min-height: 52px;
+        padding: 13px;
+    }
+
+    #challengeQuestion {
+        line-height: 1.65;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .answer-options button {
+        transition: none;
+    }
+}
+
+/* =========================================
+   FASE 5F: INFORME FINAL DE INCIDENTE
+   ========================================= */
+
+/* Panel de resultados */
+#challengePanel .summary-entry {
+    position: relative;
+    padding: 15px 16px;
+    margin-top: 12px;
+    border: 1px solid rgba(153, 151, 130, 0.18);
+    border-left: 3px solid rgba(153, 151, 130, 0.45);
+    background:
+        linear-gradient(
+            110deg,
+            rgba(145, 145, 119, 0.07),
+            rgba(8, 11, 10, 0.2)
+        );
+    line-height: 1.65;
+}
+
+/* Respuestas correctas */
+#challengePanel .summary-entry.correct {
+    border-left-color: #829c75;
+}
+
+/* Respuestas incorrectas */
+#challengePanel .summary-entry.incorrect {
+    border-left-color: #b75c50;
+}
+
+/* Jerarquía del informe */
+#challengePanel .summary-entry strong {
+    color: #dedbd1;
+}
+
+#challengePanel .summary-entry p {
+    margin: 8px 0 0;
+    color: #b9b7ac;
+}
+
+/* Puntaje y estado final */
+#challengePanel .summary-score,
+#challengePanel .summary-status {
+    padding: 16px;
+    margin: 18px 0;
+    border: 1px solid rgba(157, 117, 91, 0.25);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+#challengePanel .summary-score {
+    color: #d5c9ac;
+    font-family: monospace;
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    letter-spacing: 0.06em;
+}
+
+/* Botones del cierre */
+#challengePanel #continueButton {
+    min-height: 48px;
+    letter-spacing: 0.08em;
+}
+
+/* Adaptación móvil */
+@media (max-width: 600px) {
+    #challengePanel .summary-entry {
+        padding: 12px;
+    }
+
+    #challengePanel .summary-score,
+    #challengePanel .summary-status {
+        padding: 12px;
+    }
+}
+
+/* =========================================
+   FASE 6: IMAGEN COMPLETA Y MOVIMIENTO
+   ========================================= */
+
+/* Las imágenes cubren toda la pantalla del monitor */
+.terminal .monitor-screen {
+    width: 100%;
+    min-height: 150px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Movimiento ambiental de las cámaras */
+@keyframes camera-drift {
+    0%, 100% {
+        background-position: 48% center;
+    }
+    50% {
+        background-position: 52% center;
+    }
+}
+
+.terminal:hover .monitor-screen {
+    animation: camera-drift 7s ease-in-out infinite;
+}
+
+/* Respiración de luz en la sala */
+@keyframes room-pulse {
+    0%, 100% {
+        box-shadow: inset 0 0 45px rgba(0, 0, 0, 0.18);
+    }
+    50% {
+        box-shadow: inset 0 0 65px rgba(120, 35, 29, 0.13);
+    }
+}
+
+.office-room {
+    animation: room-pulse 8s ease-in-out infinite;
+}
+
+/* Aparición suave de los retos */
+@keyframes terminal-appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.challenge-panel:not([hidden]) {
+    animation: terminal-appear 350ms ease-out both;
+}
+
+/* Respeto por movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .office-room,
+    .terminal:hover .monitor-screen,
+    .challenge-panel:not([hidden]) {
+        animation: none;
+    }
+}
+/* REGISTRO DE INCIDENCIAS */
+
+.desk .incident-log {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    max-height: 190px;
+    overflow-y: auto;
+    margin-top: 10px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.32);
+    border-left: 2px solid #62564a;
+    color: #c5c6b8;
+    font-family: "Special Elite", monospace;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.incident-entry {
+    padding-bottom: 6px;
+    border-bottom: 1px solid rgba(160, 160, 140, 0.12);
+    animation: incident-appear 220ms ease-out;
+}
+
+.incident-time {
+    color: #a6a18b;
+}
+
+.incident-entry[data-type="SUCCESS"] {
+    color: #a8c3a1;
+}
+
+.incident-entry[data-type="ERROR"] {
+    color: #d9877d;
+}
+
+.incident-entry[data-type="WARNING"] {
+    color: #d9b47d;
+}
+
+@keyframes incident-appear {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .incident-entry {
+        animation: none;
+    }
+}

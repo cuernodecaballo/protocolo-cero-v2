@@ -1,0 +1,142 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PROTOCOLO CERO: Último turno</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <!-- PANTALLA DE INICIO -->
+    <main id="startScreen" class="screen start-screen">
+        <div class="warning-label">SAHUR INC. / ACCESO RESTRINGIDO</div>
+
+        <div class="title-block">
+            <p class="eyebrow">REGISTRO DE TURNO // 00:00</p>
+
+            <h1>PROTOCOLO <span>CERO</span></h1>
+
+            <h2>ÚLTIMO TURNO</h2>
+
+            <p class="intro">
+                La instalación continúa operativa.<br>
+                No se garantiza la integridad del sistema.
+            </p>
+        </div>
+
+        <button id="startButton" class="start-button">
+            INICIAR TURNO
+        </button>
+
+        <p class="footer-text">
+            SAHUR INC. · INFRAESTRUCTURA Y SISTEMAS INDUSTRIALES
+        </p>
+
+        <div class="screen-noise" aria-hidden="true"></div>
+    </main>
+
+    <!-- OFICINA DE CONTROL -->
+    <main id="officeScreen" class="screen office-screen" hidden>
+        <header class="office-header">
+            <div>
+                <p class="eyebrow">SAHUR INC. / CENTRO DE CONTROL</p>
+                <h2>ESTACIÓN DE OPERACIONES</h2>
+            </div>
+
+         
+            <div class="integrity-panel">
+                <span>INTEGRIDAD DEL SISTEMA</span>
+                <strong id="integrityValue">100%</strong>
+                <div class="integrity-track">
+                    <div class="integrity-fill"></div>
+                </div>
+            </div>
+
+            <div class="progress-panel">
+                <span>REGISTRO ACADÉMICO</span>
+                <strong id="progressValue">0 / 16</strong>
+                <div class="progress-track">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <span>PUNTOS: <strong id="scoreValue">0</strong></span>
+            </div>
+
+            <button id="soundToggle" class="close-button" type="button">
+                SONIDO: ACTIVADO
+            </button>
+        </header>
+
+        <button id="restartButton" class="close-button" type="button">
+    REINICIAR SISTEMA
+</button>
+        <section class="office-room">
+            <p class="room-label">SECTOR C-01 // OPERADOR: BRYAN EPSTEIN</p>
+
+            <div class="monitor-wall">
+                
+<button id="operationsTerminal" class="terminal" type="button">
+                    <span class="monitor-screen">
+                        <span class="monitor-status">EN ESPERA</span>
+                        <span class="monitor-code">T-01</span>
+                    </span>
+                    <span class="terminal-label">OPERACIONES</span>
+                </button>
+
+                
+<button id="networkTerminal" class="terminal" type="button">
+                    <span class="monitor-screen">
+                        <span class="monitor-status">SEÑAL INESTABLE</span>
+                        <span class="monitor-code">N-07</span>
+                    </span>
+                    <span class="terminal-label">RED Y COMUNICACIONES</span>
+                </button>
+
+                
+<button id="systemsTerminal" class="terminal" type="button">
+                    <span class="monitor-screen">
+                        <span class="monitor-status">DIAGNÓSTICO</span>
+                        <span class="monitor-code">T-02</span>
+                    </span>
+                    <span class="terminal-label">SISTEMAS</span>
+                </button>
+            </div>
+
+            <div class="desk">
+                <span>REGISTRO DE INCIDENCIAS</span>
+                <p>Esperando instrucciones del operador...</p>
+            </div>
+        </section>
+
+        <footer class="office-footer">
+            <span>PROTOCOLO DE SEGURIDAD // ACTIVO</span>
+            <span id="officeMessage">TODOS LOS SISTEMAS EN OBSERVACIÓN</span>
+        </footer>
+        <!-- PANEL DE DESAFÍOS -->
+        <section id="challengePanel" class="challenge-panel" hidden>
+            <div class="challenge-header">
+                <p class="eyebrow">SAHUR INC. / EVALUACIÓN OPERATIVA</p>
+                <button id="closeChallenge" class="close-button" type="button">
+                    CERRAR [X]
+                </button>
+            </div>
+
+            <p id="challengeUnit" class="challenge-unit">UNIDAD 1</p>
+            <h2 id="challengeTitle">Diagnóstico del sistema</h2>
+            <p id="challengeQuestion"></p>
+
+            <div id="answerOptions" class="answer-options"></div>
+
+            <div id="feedback" class="feedback" aria-live="polite" hidden></div>
+
+            <button id="continueButton" class="start-button" type="button" hidden>
+                VOLVER A LA OFICINA
+            </button>
+        </section>
+    </main>
+</body>
+</html>
